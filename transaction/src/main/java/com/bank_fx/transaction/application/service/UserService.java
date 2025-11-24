@@ -54,7 +54,13 @@ public class UserService {
         }
 
         bankAccountRepository.save(account);
+
+        // FIX: mettre le numéro de compte dans l'utilisateur
+        savedUser.setAccountNumber(accountNumber);
+
+        // lier le compte bancaire à l'utilisateur
         savedUser.setBankAccount(account);
+
 
         return userRepository.save(savedUser);
     }
